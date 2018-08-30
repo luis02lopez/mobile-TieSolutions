@@ -1,18 +1,29 @@
 import React from 'react';
+import LottieView from 'lottie-react-native';
 import { StyleSheet, Text, View } from 'react-native';
+import {
+  createStackNavigator,
+} from 'react-navigation';
 
 export default class App extends React.Component {
+  
+  componentDidMount() {
+    this.animation.play();
+    // Or set a specific startFrame and endFrame with:
+    this.animation.play(30, 120);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Bienvenido a Xpense-native</Text>
-        {/*
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      */}
-      </View>
+      <LottieView
+        ref={animation => {
+          this.animation = animation;
+        }}
+        source={require('./assets/servishero_loading.json')}
+      />
     );
   }
+
 }
 
 const styles = StyleSheet.create({
